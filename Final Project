@@ -1,0 +1,10 @@
+import pandas as pd
+
+
+csv_input = "productreviews-2024.csv"
+
+# Try reading the file with alternative encodings
+try:
+    df = pd.read_csv(csv_input, encoding="utf-8")  # Default encoding
+except UnicodeDecodeError:
+    df = pd.read_csv(csv_input, encoding="latin1")  # Fallback encoding for Windows
