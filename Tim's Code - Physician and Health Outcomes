@@ -1,0 +1,24 @@
+import pandas as pd
+
+# Read Physician info by county
+df_phys = pd.read_excel('/Users/popsah/Documents/MSIS 5193/Project/2024_county_health_release_oklahoma_data_-_v1.xlsx', sheet_name='Select Measure Data')
+
+# Select the desired rows and columns
+df_phys = df_phys.iloc[2:81, [134, 135, 136, 137]]  # Assuming EE, EF, EG, EH
+# Print the selected DataFrame
+# print(df_phys)
+
+
+# Read Health Outcomes
+df_outcomes= pd.read_excel('/Users/popsah/Documents/MSIS 5193/Project/2024_county_health_release_oklahoma_data_-_v1.xlsx', sheet_name='Health Outcomes & Factors')
+
+# Select the desired rows and columns
+df_outcomes = df_outcomes.iloc[2:81, [3, 4]]  # Cols D & E
+
+# print(df_outcomes)
+
+###############################################
+### Combine Physician data and Outcome data ###
+
+df = pd.concat([df_phys, df_outcomes], axis=1)
+print(df)
